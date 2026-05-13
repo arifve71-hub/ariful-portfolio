@@ -99,31 +99,23 @@
 
         .element {
             position: absolute;
-            color: rgba(255, 255, 255, 0.2);
-            filter: blur(0.5px);
-            font-size: 1.1rem;
+            opacity: 0.15;
+            filter: blur(1px);
+            width: 32px;
+            height: 32px;
             animation: float-around 30s infinite linear;
-            font-weight: 700;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 4px;
             user-select: none;
-            font-family: 'Inter', sans-serif;
-            opacity: 0.5;
+            pointer-events: none;
         }
 
-        .software-badge {
-            padding: 4px 10px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.05);
+        .element img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
-
-        .ae { color: #cf96fd; border-color: #cf96fd; }
-        .pr { color: #00e5ff; border-color: #00e5ff; }
-        .dr { border-radius: 50%; width: 50px; height: 50px; color: #ff9d00; border-color: #ff9d00; }
-        .bl { color: #ea7600; border-color: #ea7600; }
-        .ps { color: #31a8ff; border-color: #31a8ff; }
 
         @keyframes float-around {
             0% { transform: translate(0, 0) rotate(0deg); opacity: 0.2; }
@@ -525,19 +517,19 @@
     </div>
 
     <div class="editing-elements">
-        <div class="element el-1 software-badge ae">Ae</div>
-        <div class="element el-2 software-badge pr">Pr</div>
-        <div class="element el-3 software-badge bl">Bl</div>
-        <div class="element el-4 software-badge ps">Ps</div>
-        <div class="element el-5 software-badge ae">Ae</div>
-        <div class="element el-6 software-badge pr">Pr</div>
-        <div class="element el-7 software-badge bl">Bl</div>
-        <div class="element el-8 software-badge ps">Ps</div>
-        <div class="element el-1 software-badge pr" style="top: 40%; left: 85%;">Pr</div>
-        <div class="element el-4 software-badge ae" style="top: 75%; left: 50%;">Ae</div>
-        <div class="element el-3 dr" style="top: 15%; left: 80%;"><i class="fas fa-video"></i></div>
-        <div class="element el-5 dr" style="top: 45%; left: 5%;"><i class="fas fa-film"></i></div>
-        <div class="element dr" style="bottom: 10%; right: 5%; color: #ff4500;"><i class="fas fa-camera"></i></div>
+        <div class="element el-1"><img src="/icon%20(2).png" alt="Icon"></div>
+        <div class="element el-2"><img src="/icon%20(3).png" alt="Icon"></div>
+        <div class="element el-3"><img src="/icon%20(4).png" alt="Icon"></div>
+        <div class="element el-4"><img src="/icon%20(5).png" alt="Icon"></div>
+        <div class="element el-5"><img src="/icon%20(6).png" alt="Icon"></div>
+        <div class="element el-6"><img src="/icon%20(2).png" alt="Icon"></div>
+        <div class="element el-7"><img src="/icon%20(3).png" alt="Icon"></div>
+        <div class="element el-8"><img src="/icon%20(4).png" alt="Icon"></div>
+        <div class="element el-1" style="top: 40%; left: 85%;"><img src="/icon%20(5).png" alt="Icon"></div>
+        <div class="element el-4" style="top: 75%; left: 50%;"><img src="/icon%20(6).png" alt="Icon"></div>
+        <div class="element el-3" style="top: 15%; left: 80%;"><img src="/icon%20(2).png" alt="Icon"></div>
+        <div class="element el-5" style="top: 45%; left: 5%;"><img src="/icon%20(3).png" alt="Icon"></div>
+        <div class="element" style="bottom: 10%; right: 5%;"><img src="/icon%20(4).png" alt="Icon"></div>
     </div>
 
     <nav id="navbar">
@@ -569,7 +561,7 @@
     </header>
 
     <main class="container">
-        <!-- CATEGORY 1 -->
+        <!-- CATEGORY 1: 3D & Motion Graphics -->
         <section class="category-section scroll-reveal">
             <h2 class="category-title">3D & Motion Graphics</h2>
             <p class="category-subtitle">Blender, After Effects & 3D Animation Work</p>
@@ -607,45 +599,45 @@
             </div>
         </section>
 
-        <!-- CATEGORY 2 -->
+        <!-- CATEGORY 2: Commercial & Corporate -->
         <section class="category-section scroll-reveal">
             <h2 class="category-title">Commercial & Corporate</h2>
             <p class="category-subtitle">Brand Videos & Company Films</p>
             <div class="video-grid">
-                <div class="video-card scroll-reveal" data-video="JDZMx4an49U">
+                <div class="video-card scroll-reveal" data-video="BirN5sHCYyo">
                     <div class="thumbnail-container">
-                        <img src="/work-2.10.jpg" alt="Brand Commercial" loading="lazy" decoding="async">
+                        <img src="/work-1.jpg" alt="Commercial Video" loading="lazy" decoding="async">
                         <div class="play-overlay"></div>
                     </div>
                     <div class="video-info">
                         <h3>Brand Commercial</h3>
-                        <p>Corporate brand promotional video</p>
+                        <p>High-end corporate brand promotional video</p>
                     </div>
                 </div>
-                <div class="video-card scroll-reveal" data-video="kx8WKziTH5c">
+                <div class="video-card scroll-reveal" data-video="JDZMx4an49U">
                     <div class="thumbnail-container">
-                        <img src="/work-2.11.png" alt="Company Profile" loading="lazy" decoding="async">
+                        <img src="/work-2.10.jpg" alt="Company Showcase" loading="lazy" decoding="async">
                         <div class="play-overlay"></div>
                     </div>
                     <div class="video-info">
-                        <h3>Company Profile</h3>
-                        <p>Professional company documentary</p>
+                        <h3>Company Showcase</h3>
+                        <p>Professional business presentation</p>
                     </div>
                 </div>
-                <div class="video-card scroll-reveal" data-video="diijMjIOUEk">
+                <div class="video-card scroll-reveal" data-video="-cGKxsVBlwM">
                     <div class="thumbnail-container">
-                        <img src="/work-2.5.png" alt="Product Launch" loading="lazy" decoding="async">
+                        <img src="/work-5.jpg" alt="Product Presentation" loading="lazy" decoding="async">
                         <div class="play-overlay"></div>
                     </div>
                     <div class="video-info">
-                        <h3>Real Estate Promotional</h3>
-                        <p>Real Estate Promotional Video Campaign</p>
+                        <h3>Product Rendering</h3>
+                        <p>Realistic 3D product showcase</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- CATEGORY 3 -->
+        <!-- CATEGORY 3: Social Media Content -->
         <section class="category-section scroll-reveal">
             <h2 class="category-title">Social Media Content</h2>
             <p class="category-subtitle">Facebook Ads & YouTube Content</p>
@@ -683,24 +675,24 @@
             </div>
         </section>
 
-        <!-- CATEGORY 4 -->
+        <!-- CATEGORY 4: AI & Software Integration -->
         <section class="category-section scroll-reveal">
             <h2 class="category-title">AI & Software Integration</h2>
             <p class="category-subtitle">AI-Powered Video & Creative Tools</p>
             <div class="video-grid">
                 <div class="video-card scroll-reveal" data-video="R3J8Vw5WTfA">
                     <div class="thumbnail-container">
-                        <img src="/work-2.4.jpg" alt="Cinematic Grade" loading="lazy" decoding="async">
+                        <img src="/work-2.4.jpg" alt="AI Enhanced" loading="lazy" decoding="async">
                         <div class="play-overlay"></div>
                     </div>
                     <div class="video-info">
-                        <h3>AI Content</h3>
+                        <h3>AI Content Generation</h3>
                         <p>AI Content for Eid Festival and Brand Promo</p>
                     </div>
                 </div>
                 <div class="video-card scroll-reveal" data-video="WAmWNpMFdjQ">
                     <div class="thumbnail-container">
-                        <img src="/work-2.6.jpg" alt="AI Enhanced Video" loading="lazy" decoding="async">
+                        <img src="/work-2.6.jpg" alt="AI Assisted Video" loading="lazy" decoding="async">
                         <div class="play-overlay"></div>
                     </div>
                     <div class="video-info">
@@ -710,7 +702,7 @@
                 </div>
                 <div class="video-card scroll-reveal" data-video="5aoJkLHQM6w">
                     <div class="thumbnail-container">
-                        <img src="/work-2.12.jpg" alt="Software Integration" loading="lazy" decoding="async">
+                        <img src="/work-2.12.jpg" alt="AI Workflow" loading="lazy" decoding="async">
                         <div class="play-overlay"></div>
                     </div>
                     <div class="video-info">

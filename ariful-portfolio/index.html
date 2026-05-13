@@ -102,29 +102,23 @@
 
         .element {
             position: absolute;
-            color: rgba(255, 255, 255, 0.05);
-            filter: blur(2px);
-            font-size: 1.2rem;
+            opacity: 0.15;
+            filter: blur(1px);
+            width: 35px;
+            height: 35px;
             animation: float-around 30s infinite linear;
-            font-weight: 700;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 4px;
             user-select: none;
-            font-family: 'Inter', sans-serif;
+            pointer-events: none;
         }
 
-        .software-badge {
-            padding: 4px 8px;
-            border: 1.5px solid rgba(255, 255, 255, 0.1);
-            background: rgba(0, 0, 0, 0.2);
+        .element img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
-
-        .ae { color: #cf96fd; border-color: #cf96fd; }
-        .pr { color: #00e5ff; border-color: #00e5ff; }
-        .dr { border-radius: 50%; width: 50px; height: 50px; color: #ff9d00; border-color: #ff9d00; }
-        .bl { color: #ea7600; border-color: #ea7600; }
 
         @keyframes float-around {
             0% { transform: translate(0, 0) rotate(0deg); opacity: 0.2; }
@@ -862,14 +856,14 @@
     </div>
 
     <div class="editing-elements">
-        <div class="element software-badge ae el-1">Ae</div>
-        <div class="element software-badge pr el-2">Pr</div>
-        <div class="element dr el-3"><i class="fas fa-circle-nodes"></i></div>
-        <div class="element software-badge bl el-4">Bl</div>
-        <div class="element software-badge ae el-5">Ae</div>
-        <div class="element software-badge pr el-6">Pr</div>
-        <div class="element dr el-7"><i class="fas fa-circle-dot"></i></div>
-        <div class="element software-badge bl el-8">Bl</div>
+        <div class="element el-1"><img src="/icon%20(2).png" alt="Icon"></div>
+        <div class="element el-2"><img src="/icon%20(3).png" alt="Icon"></div>
+        <div class="element el-3"><img src="/icon%20(4).png" alt="Icon"></div>
+        <div class="element el-4"><img src="/icon%20(5).png" alt="Icon"></div>
+        <div class="element el-5"><img src="/icon%20(6).png" alt="Icon"></div>
+        <div class="element el-6"><img src="/icon%20(2).png" alt="Icon"></div>
+        <div class="element el-7"><img src="/icon%20(3).png" alt="Icon"></div>
+        <div class="element el-8"><img src="/icon%20(4).png" alt="Icon"></div>
     </div>
 
     <nav id="navbar">
@@ -1069,11 +1063,11 @@
                 <h2 class="section-title scroll-reveal">My Work</h2>
                 <p class="section-subtitle scroll-reveal">Selected Projects</p>
                 <div class="work-grid">
-                    <div class="work-card glass scroll-reveal has-video" data-video="BirN5sHCYyo">
+                    <div class="work-card glass scroll-reveal has-video" data-video="5tMzxGiajIU">
                         <div class="work-img-container">
-                            <img src="/work-1.jpg" alt="Commercial Video" loading="lazy" decoding="async">
+                            <img src="/work-6.png" alt="Corporate Documentary" loading="lazy" decoding="async">
                         </div>
-                        <div class="caption">Commercial Video</div>
+                        <div class="caption">Corporate Documentary</div>
                     </div>
                     <div class="work-card glass scroll-reveal has-video" data-video="FH8KyHcG28I">
                         <div class="work-img-container">
@@ -1087,23 +1081,23 @@
                         </div>
                         <div class="caption">Cinematic VFX Shots</div>
                     </div>
-                    <div class="work-card glass scroll-reveal has-video" data-video="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1352519066922092&show_text=0">
+                    <div class="work-card glass scroll-reveal has-video" data-video="JDZMx4an49U">
                         <div class="work-img-container">
-                            <img src="/work-4.jpg" alt="Social Media Campaign" loading="lazy" decoding="async">
+                            <img src="/work-2.10.jpg" alt="Brand Commercial" loading="lazy" decoding="async">
                         </div>
-                        <div class="caption">Social Media Campaign</div>
+                        <div class="caption">Brand Commercial</div>
                     </div>
-                    <div class="work-card glass scroll-reveal has-video" data-video="-cGKxsVBlwM">
+                    <div class="work-card glass scroll-reveal has-video" data-video="kx8WKziTH5c">
                         <div class="work-img-container">
-                            <img src="/work-5.jpg" alt="Product Rendering" loading="lazy" decoding="async">
+                            <img src="/work-2.11.png" alt="Company Profile" loading="lazy" decoding="async">
                         </div>
-                        <div class="caption">Product Rendering</div>
+                        <div class="caption">Company Profile</div>
                     </div>
-                    <div class="work-card glass scroll-reveal has-video" data-video="5tMzxGiajIU">
+                    <div class="work-card glass scroll-reveal has-video" data-video="diijMjIOUEk">
                         <div class="work-img-container">
-                            <img src="/work-6.png" alt="Corporate Documentary" loading="lazy" decoding="async">
+                            <img src="/work-2.5.png" alt="Real Estate Promotional" loading="lazy" decoding="async">
                         </div>
-                        <div class="caption">Corporate Documentary</div>
+                        <div class="caption">Real Estate Promotional</div>
                     </div>
                 </div>
                 <a href="videos.html" class="btn-more scroll-reveal">More</a>
@@ -1290,7 +1284,6 @@
                         <input type="hidden" name="from_name" value="HM Ariful Islam Portfolio">
                         <input type="hidden" name="access_key" value="9c5f8f37-3873-487e-8ba6-7fa4badd0ad6">
                         <input type="hidden" name="subject" value="New Message from Portfolio Website">
-                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
                         <button type="submit" class="btn-submit">Send Message</button>
                     </form>
                 </div>
@@ -1337,6 +1330,11 @@
             submitBtn.style.opacity = '0.7';
 
             const formData = new FormData(contactForm);
+            // Append timestamp to message to prevent it being seen as identical/duplicate spam
+            const timestamp = new Date().toLocaleString();
+            const message = formData.get('message');
+            formData.set('message', `${message}\n\n[Sent via Website Contact Form at ${timestamp}]`);
+            
             const object = Object.fromEntries(formData);
             const json = JSON.stringify(object);
 
@@ -1357,7 +1355,11 @@
                     submitBtn.style.background = '#10b981';
                     contactForm.reset();
                 } else {
-                    submitBtn.textContent = 'Error: ' + (result.message || 'Check Key');
+                    let errorMsg = result.message || 'Submission failed';
+                    if (errorMsg.toLowerCase().includes('spam')) {
+                        errorMsg = 'Check email accuracy or try again.';
+                    }
+                    submitBtn.textContent = errorMsg;
                     submitBtn.style.background = '#f59e0b';
                     console.error('Submission Result:', result);
                 }
