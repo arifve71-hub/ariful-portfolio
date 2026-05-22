@@ -30,11 +30,18 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        body {
+        html {
+            width: 100%;
             background-color: var(--bg-deep);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            width: 100%;
+            background-color: transparent;
             color: var(--text-primary);
             font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
             line-height: 1.6;
         }
 
@@ -76,14 +83,14 @@
         .orb {
             position: absolute;
             border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.3;
+            filter: blur(140px);
+            opacity: 0.15;
             animation: float 15s infinite ease-in-out;
         }
 
-        .orb-1 { width: 600px; height: 600px; background: #2563eb; top: -20%; left: -10%; animation-delay: 0s; }
-        .orb-2 { width: 500px; height: 500px; background: #4f46e5; bottom: -10%; right: -5%; animation-delay: -5s; }
-        .orb-3 { width: 400px; height: 400px; background: #7c3aed; top: 30%; left: 25%; animation-delay: -10s; }
+        .orb-1 { width: 600px; height: 600px; background: #2563eb; top: -20%; left: -10%; animation-delay: 0s; opacity: 0.18; }
+        .orb-2 { width: 500px; height: 500px; background: #4f46e5; bottom: -10%; right: -5%; animation-delay: -5s; opacity: 0.18; }
+        .orb-3 { width: 400px; height: 400px; background: #7c3aed; top: 30%; left: 25%; animation-delay: -10s; opacity: 0.15; }
 
         /* --- Floating Editing Elements --- */
         .editing-elements {
@@ -99,10 +106,10 @@
 
         .element {
             position: absolute;
-            opacity: 0.15;
-            filter: blur(1px);
-            width: 32px;
-            height: 32px;
+            opacity: 0.35;
+            filter: blur(0px);
+            width: 38px;
+            height: 38px;
             animation: float-around 30s infinite linear;
             display: flex;
             align-items: center;
@@ -118,11 +125,11 @@
         }
 
         @keyframes float-around {
-            0% { transform: translate(0, 0) rotate(0deg); opacity: 0.2; }
-            25% { transform: translate(40px, 30px) rotate(5deg); opacity: 0.4; }
-            50% { transform: translate(20px, 60px) rotate(-5deg); opacity: 0.2; }
-            75% { transform: translate(-20px, 30px) rotate(5deg); opacity: 0.4; }
-            100% { transform: translate(0, 0) rotate(0deg); opacity: 0.2; }
+            0% { transform: translate(0, 0) rotate(0deg); opacity: 0.3; }
+            25% { transform: translate(40px, 30px) rotate(5deg); opacity: 0.5; }
+            50% { transform: translate(20px, 60px) rotate(-5deg); opacity: 0.3; }
+            75% { transform: translate(-20px, 30px) rotate(5deg); opacity: 0.5; }
+            100% { transform: translate(0, 0) rotate(0deg); opacity: 0.3; }
         }
 
         .el-1 { top: 12%; left: 8%; }
@@ -278,7 +285,7 @@
         /* --- Video Grid --- */
         .video-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 30px;
         }
 
@@ -501,10 +508,35 @@
 
         /* --- Responsive --- */
         @media (max-width: 768px) {
+            .page-header { padding: 120px 0 40px; }
             .page-title { font-size: 2.5rem; }
             .video-grid { grid-template-columns: 1fr; }
-            .nav-links { display: none; }
-            .menu-toggle { display: flex; }
+            nav .nav-links {
+                display: none;
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--bg-deep);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 40px;
+                z-index: 999;
+            }
+            nav.mobile-active .nav-links { display: flex; }
+            .menu-toggle { display: flex; z-index: 1001; }
+            nav.mobile-active .menu-toggle span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+            nav.mobile-active .menu-toggle span:nth-child(2) { opacity: 0; }
+            nav.mobile-active .menu-toggle span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        }
+
+        @media (max-width: 480px) {
+            .page-header { padding: 100px 0 30px; }
+            .page-title { font-size: 2rem; }
+            .page-subtitle { font-size: 0.95rem; margin-bottom: 20px; }
+            .video-grid { gap: 20px; }
         }
     </style>
 </head>
@@ -517,19 +549,19 @@
     </div>
 
     <div class="editing-elements">
-        <div class="element el-1"><img src="/icon%20(2).png" alt="Icon"></div>
-        <div class="element el-2"><img src="/icon%20(3).png" alt="Icon"></div>
-        <div class="element el-3"><img src="/icon%20(4).png" alt="Icon"></div>
-        <div class="element el-4"><img src="/icon%20(5).png" alt="Icon"></div>
-        <div class="element el-5"><img src="/icon%20(6).png" alt="Icon"></div>
-        <div class="element el-6"><img src="/icon%20(2).png" alt="Icon"></div>
-        <div class="element el-7"><img src="/icon%20(3).png" alt="Icon"></div>
-        <div class="element el-8"><img src="/icon%20(4).png" alt="Icon"></div>
-        <div class="element el-1" style="top: 40%; left: 85%;"><img src="/icon%20(5).png" alt="Icon"></div>
-        <div class="element el-4" style="top: 75%; left: 50%;"><img src="/icon%20(6).png" alt="Icon"></div>
-        <div class="element el-3" style="top: 15%; left: 80%;"><img src="/icon%20(2).png" alt="Icon"></div>
-        <div class="element el-5" style="top: 45%; left: 5%;"><img src="/icon%20(3).png" alt="Icon"></div>
-        <div class="element" style="bottom: 10%; right: 5%;"><img src="/icon%20(4).png" alt="Icon"></div>
+        <div class="element el-1"><img src="/icon-2.png" alt="Icon"></div>
+        <div class="element el-2"><img src="/icon-3.png" alt="Icon"></div>
+        <div class="element el-3"><img src="/icon-4.png" alt="Icon"></div>
+        <div class="element el-4"><img src="/icon-5.png" alt="Icon"></div>
+        <div class="element el-5"><img src="/icon-6.png" alt="Icon"></div>
+        <div class="element el-6"><img src="/icon-2.png" alt="Icon"></div>
+        <div class="element el-7"><img src="/icon-3.png" alt="Icon"></div>
+        <div class="element el-8"><img src="/icon-4.png" alt="Icon"></div>
+        <div class="element el-1" style="top: 40%; left: 85%;"><img src="/icon-5.png" alt="Icon"></div>
+        <div class="element el-4" style="top: 75%; left: 50%;"><img src="/icon-6.png" alt="Icon"></div>
+        <div class="element el-3" style="top: 15%; left: 80%;"><img src="/icon-2.png" alt="Icon"></div>
+        <div class="element el-5" style="top: 45%; left: 5%;"><img src="/icon-3.png" alt="Icon"></div>
+        <div class="element" style="bottom: 10%; right: 5%;"><img src="/icon-4.png" alt="Icon"></div>
     </div>
 
     <nav id="navbar">
@@ -765,6 +797,14 @@
         const nav = document.getElementById('navbar');
         mobileMenu.addEventListener('click', () => {
             nav.classList.toggle('mobile-active');
+        });
+
+        // Close mobile menu when a nav link is clicked
+        const navLinks = document.querySelectorAll('.nav-links a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('mobile-active');
+            });
         });
 
         // --- Video Modal Logic ---
