@@ -252,7 +252,7 @@
             transition: var(--transition);
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: var(--text-primary);
         }
 
@@ -1164,10 +1164,8 @@
                 <span>HM Ariful Islam</span>
             </a>
             <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#experience">Experience</a>
-                <a href="#skills">Skills</a>
-                <a href="#work">Work</a>
+                <a href="index.html" class="active">Home</a>
+                <a href="about.html">About</a>
                 <a href="videos.html">Videos</a>
                 <a href="#contact">Contact</a>
             </div>
@@ -1247,124 +1245,7 @@
             </div>
         </section>
 
-        <!-- EXPERIENCE -->
-        <section id="experience">
-            <div class="container">
-                <h2 class="section-title scroll-reveal">Professional Experience</h2>
-                <p class="section-subtitle scroll-reveal">My career journey so far</p>
-                <div class="timeline">
-                    <div class="exp-item scroll-reveal">
-                        <div class="exp-dot"></div>
-                        <div class="exp-card glass">
-                            <span class="duration">2025 – Present</span>
-                            <h3>Video Editor (IT & Multimedia)</h3>
-                            <p class="company">Mariners Group</p>
-                            <p>Leading post-production workflows for corporate branding and digital marketing.</p>
-                        </div>
-                    </div>
-                    <div class="exp-item scroll-reveal">
-                        <div class="exp-dot"></div>
-                        <div class="exp-card glass">
-                            <span class="duration">2024 – 2025</span>
-                            <h3>Senior Video Editor</h3>
-                            <p class="company">Lens Cafe Studio</p>
-                            <p>Managed a team of editors and handled complex cinematic projects.</p>
-                        </div>
-                    </div>
-                    <div class="exp-item scroll-reveal">
-                        <div class="exp-dot"></div>
-                        <div class="exp-card glass">
-                            <span class="duration">2022 – 2024</span>
-                            <h3>Video Editor</h3>
-                            <p class="company">IT Promotion</p>
-                            <p>Created highly engaging social media content and commercial spots.</p>
-                        </div>
-                    </div>
-                    <div class="exp-item scroll-reveal">
-                        <div class="exp-dot"></div>
-                        <div class="exp-card glass">
-                            <span class="duration">2021 – 2023</span>
-                            <h3>Junior Video Editor</h3>
-                            <p class="company">OMS Studio</p>
-                            <p>Assisted in assembly and baseline color grading for YouTube content.</p>
-                        </div>
-                    </div>
-                    <div class="exp-item scroll-reveal">
-                        <div class="exp-dot"></div>
-                        <div class="exp-card glass">
-                            <span class="duration">2020 – Present</span>
-                            <h3>Freelance Video Editor</h3>
-                            <p class="company">Self-Employed (Remote)</p>
-                            <p>Helping international clients bring their visions to life through remote collaboration.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- SKILLS -->
-        <section id="skills">
-            <div class="container">
-                <h2 class="section-title scroll-reveal">Technical Expertise</h2>
-                <p class="section-subtitle scroll-reveal">Tools of the trade</p>
-                <div class="skills-grid scroll-reveal">
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>Adobe Premiere Pro</span>
-                            <span><span class="counter" data-target="95">0</span>%</span>
-                        </div>
-                        <div class="progress-bg">
-                            <div class="progress-bar" data-target="95%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>Adobe After Effects</span>
-                            <span><span class="counter" data-target="85">0</span>%</span>
-                        </div>
-                        <div class="progress-bg">
-                            <div class="progress-bar" data-target="85%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>AI Tools for Content</span>
-                            <span><span class="counter" data-target="85">0</span>%</span>
-                        </div>
-                        <div class="progress-bg">
-                            <div class="progress-bar" data-target="85%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>Color Grading & Audio</span>
-                            <span><span class="counter" data-target="85">0</span>%</span>
-                        </div>
-                        <div class="progress-bg">
-                            <div class="progress-bar" data-target="85%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>DaVinci Resolve</span>
-                            <span><span class="counter" data-target="70">0</span>%</span>
-                        </div>
-                        <div class="progress-bg">
-                            <div class="progress-bar" data-target="70%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>Blender 3D</span>
-                            <span><span class="counter" data-target="65">0</span>%</span>
-                        </div>
-                        <div class="progress-bg">
-                            <div class="progress-bar" data-target="65%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- WORK -->
         <section id="work">
@@ -1413,114 +1294,7 @@
             </div>
         </section>
 
-        <!-- SERVICES -->
-        <section id="services">
-            <div class="container">
-                <h2 class="section-title scroll-reveal">What I Do</h2>
-                <div class="services-grid">
-                    <div class="service-card glass scroll-reveal">
-                        <h4>Video Editing</h4>
-                        <p>High-end post-production for brands and artists.</p>
-                    </div>
-                    <div class="service-card glass scroll-reveal">
-                        <h4>Motion Graphics</h4>
-                        <p>Dynamic visuals that bring stories to life.</p>
-                    </div>
-                    <div class="service-card glass scroll-reveal">
-                        <h4>Color Grading</h4>
-                        <p>Professional look and feel for every frame.</p>
-                    </div>
-                    <div class="service-card glass scroll-reveal">
-                        <h4>3D Animation</h4>
-                        <p>Creating immersive 3D environments and assets.</p>
-                    </div>
-                    <div class="service-card glass scroll-reveal">
-                        <h4>AI Integration</h4>
-                        <p>Leveraging AI for faster and smarter workflows.</p>
-                    </div>
-                    <div class="service-card glass scroll-reveal">
-                        <h4>Storytelling</h4>
-                        <p>Direction that connects with the viewer's heart.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- EDUCATION & LANGUAGES -->
-        <section class="container">
-            <div class="edu-lang-section">
-                <div class="edu-column scroll-reveal">
-                    <h2 class="section-title" style="text-align: left; margin-bottom: 2rem;">Education</h2>
-                    <div class="edu-cards">
-                        <div class="edu-card glass">
-                            <h3>Alim (HSC Equivalent)</h3>
-                            <p>Charfassion Alia Madrasa | 2018</p>
-                        </div>
-                        <div class="edu-card glass">
-                            <h3>Dakhil (SSC Equivalent)</h3>
-                            <p>Charfassion Alia Madrasa | 2016</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="lang-column scroll-reveal">
-                    <h2 class="section-title" style="text-align: left; margin-bottom: 2rem;">Languages</h2>
-                    <div class="lang-grid">
-                        <div class="lang-card glass">
-                            <div class="circular-progress" data-percentage="100">
-                                <svg>
-                                    <circle class="bg" cx="40" cy="40" r="36"></circle>
-                                    <circle class="bar" cx="40" cy="40" r="36"></circle>
-                                </svg>
-                                <div class="percent-text"><span class="counter" data-target="100">0</span>%</div>
-                            </div>
-                            <div class="lang-info">
-                                <h4>Bangla</h4>
-                                <span>Native</span>
-                            </div>
-                        </div>
-                        <div class="lang-card glass">
-                            <div class="circular-progress" data-percentage="80">
-                                <svg>
-                                    <circle class="bg" cx="40" cy="40" r="36"></circle>
-                                    <circle class="bar" cx="40" cy="40" r="36"></circle>
-                                </svg>
-                                <div class="percent-text"><span class="counter" data-target="80">0</span>%</div>
-                            </div>
-                            <div class="lang-info">
-                                <h4>English</h4>
-                                <span>Professional</span>
-                            </div>
-                        </div>
-                        <div class="lang-card glass">
-                            <div class="circular-progress" data-percentage="55">
-                                <svg>
-                                    <circle class="bg" cx="40" cy="40" r="36"></circle>
-                                    <circle class="bar" cx="40" cy="40" r="36"></circle>
-                                </svg>
-                                <div class="percent-text"><span class="counter" data-target="55">0</span>%</div>
-                            </div>
-                            <div class="lang-info">
-                                <h4>Arabic</h4>
-                                <span>Intermediate</span>
-                            </div>
-                        </div>
-                        <div class="lang-card glass">
-                            <div class="circular-progress" data-percentage="85">
-                                <svg>
-                                    <circle class="bg" cx="40" cy="40" r="36"></circle>
-                                    <circle class="bar" cx="40" cy="40" r="36"></circle>
-                                </svg>
-                                <div class="percent-text"><span class="counter" data-target="85">0</span>%</div>
-                            </div>
-                            <div class="lang-info">
-                                <h4>Hindi</h4>
-                                <span>Fluent</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- CONTACT -->
         <section id="contact">

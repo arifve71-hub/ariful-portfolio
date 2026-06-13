@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me | HM Ariful Islam</title>
+    <link rel="icon" type="image/x-icon" href="logo.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="my-image.png" as="image" fetchpriority="high">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+
+        :root {
+            --bg-deep: #050a18;
+            --bg-mid: #0a1628;
+            --accent: #1e1b4b;
+            --glow: #3b82f6;
+            --text-primary: #f0f4ff;
+            --text-secondary: #8899bb;
+            --glass-bg: rgba(255, 255, 255, 0.04);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --gradient-violet: linear-gradient(135deg, #3b82f6 0%, #a855f7 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        html {
+            width: 100%;
+            background-color: var(--bg-deep);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            width: 100%;
+            background-color: transparent;
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, .font-heading {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* --- Animations --- */
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0, 0) scale(1); }
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Background Orbs --- */
+        .orb-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(140px);
+            opacity: 0.15;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .orb-list-1 { width: 600px; height: 600px; background: #2563eb; top: -20%; left: -10%; animation-delay: 0s; opacity: 0.18; }
+        .orb-list-2 { width: 500px; height: 500px; background: #4f46e5; bottom: -10%; right: -5%; animation-delay: -5s; opacity: 0.18; }
+        .orb-list-3 { width: 400px; height: 400px; background: #7c3aed; top: 30%; left: 25%; animation-delay: -10s; opacity: 0.15; }
+        .orb-hero { width: 300px; height: 300px; background: #3b82f6; top: 20%; right: 15%; filter: blur(120px); animation: float 10s infinite alternate; opacity: 0.19; }
+
+        /* --- Floating Editing Elements --- */
+        .editing-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .element {
+            position: absolute;
+            opacity: 0.35;
+            filter: blur(1.5px);
+            width: 25px;
+            height: 25px;
+            animation: float-around 30s infinite linear;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        .element img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        @keyframes float-around {
+            0% { transform: translate(0, 0) rotate(0deg); opacity: 0.3; }
+            25% { transform: translate(40px, 30px) rotate(5deg); opacity: 0.5; }
+            50% { transform: translate(20px, 60px) rotate(-5deg); opacity: 0.3; }
+            75% { transform: translate(-20px, 30px) rotate(5deg); opacity: 0.5; }
+            100% { transform: translate(0, 0) rotate(0deg); opacity: 0.3; }
+        }
+
+        .el-1 { top: 12%; left: 8%; }
+        .el-2 { top: 65%; right: 12%; }
+        .el-3 { top: 30%; left: 75%; }
+        .el-4 { bottom: 20%; left: 10%; }
+        .el-5 { top: 82%; right: 30%; }
+        .el-6 { top: 22%; left: 40%; }
+        .el-7 { top: 50%; left: 20%; }
+        .el-8 { bottom: 25%; right: 20%; }
+        .el-9 { top: 45%; right: 5%; }
+        .el-10 { bottom: 45%; left: 35%; }
+
+        /* --- Glassmorphism Component --- */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+            transition: var(--transition);
+        }
+
+        .glass:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        /* --- Typography Helpers --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-align: center;
+            background: var(--gradient-violet);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 4rem;
+        }
+
+        /* --- Navbar --- */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        nav.scrolled {
+            height: 70px;
+            background: rgba(5, 10, 24, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+        }
+
+        #logo-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+            transition: var(--transition);
+        }
+
+        .logo-box:hover #logo-img {
+            border-color: var(--glow);
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--text-primary);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            width: 24px;
+            height: 2px;
+            background: white;
+            transition: var(--transition);
+        }
+
+        /* --- Header Section --- */
+        .page-header {
+            padding: 160px 0 60px;
+            text-align: center;
+        }
+
+        .page-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            position: relative;
+        }
+
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--glow);
+            border-radius: 2px;
+        }
+
+        .page-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-top: 20px;
+        }
+
+        /* --- About --- */
+        #about { padding: 40px 0 100px 0; }
+        .about-card {
+            padding: 60px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .about-text {
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .stat-card {
+            padding: 24px;
+            text-align: center;
+        }
+        .stat-card h3 {
+            font-size: 2rem;
+            color: var(--glow);
+            margin-bottom: 0.5rem;
+        }
+        .stat-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* --- Experience --- */
+        #experience { padding: 100px 0; }
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding-left: 50px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--glow), transparent);
+            box-shadow: 0 0 15px var(--glow);
+        }
+        .exp-item {
+            position: relative;
+            padding-bottom: 50px;
+        }
+        .exp-dot {
+            position: absolute;
+            left: -55px;
+            top: 10px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--glow);
+            box-shadow: 0 0 10px var(--glow);
+        }
+        .exp-card {
+            padding: 30px;
+        }
+        .exp-card h3 { font-size: 1.25rem; margin-bottom: 5px; }
+        .exp-card .company { color: var(--glow); font-weight: 500; margin-bottom: 10px; }
+        .exp-card .duration { font-size: 0.85rem; color: var(--text-secondary); }
+
+        /* --- Skills --- */
+        #skills { padding: 100px 0; }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .skill-item { margin-bottom: 25px; }
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .progress-bg {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .progress-bar {
+            height: 100%;
+            background: var(--gradient-violet);
+            width: 0;
+            transition: width 1.5s cubic-bezier(0.1, 0.5, 0.5, 1);
+        }
+
+        /* --- Services --- */
+        #services { padding: 100px 0; }
+        .services-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 24px;
+        }
+        .service-card {
+            flex: 1 1 260px;
+            max-width: calc(25% - 20px);
+            padding: 30px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (max-width: 1200px) {
+            .service-card {
+                max-width: calc(33.33% - 20px);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .service-card {
+                max-width: calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .service-card {
+                max-width: 100%;
+                flex: 1 1 100%;
+            }
+        }
+        .service-card h4 { margin-top: 15px; margin-bottom: 10px; font-size: 1.1rem; }
+        .service-card p { font-size: 0.9rem; color: var(--text-secondary); }
+
+        /* --- Education & Languages --- */
+        .edu-lang-section {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 60px;
+            padding: 100px 0;
+        }
+        .edu-cards { display: flex; flex-direction: column; gap: 24px; }
+        .edu-card { padding: 30px; }
+        .lang-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .lang-card {
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .circular-progress {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            margin-bottom: 15px;
+        }
+        .circular-progress svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+        .circular-progress circle {
+            fill: none;
+            stroke-width: 6;
+            stroke-linecap: round;
+        }
+        .circular-progress .percent-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1rem;
+            font-weight: 600;
+            color: white;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .circular-progress .bg { stroke: rgba(255, 255, 255, 0.05); }
+        .circular-progress .bar {
+            stroke: var(--glow);
+            stroke-dasharray: 226;
+            stroke-dashoffset: 226;
+            transition: stroke-dashoffset 2s ease-out;
+        }
+        .lang-info h4 { font-size: 0.95rem; margin-bottom: 2px; }
+        .lang-info span { font-size: 0.75rem; color: var(--text-secondary); }
+
+        /* --- Footer --- */
+        footer {
+            padding: 60px 0;
+            border-top: 1px solid var(--glass-border);
+            text-align: center;
+        }
+        .social-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 24px; }
+        .social-links a { color: var(--text-secondary); transition: var(--transition); font-size: 1.25rem; }
+        .social-links a:hover { color: var(--glow); }
+        .footer-text { font-size: 0.85rem; color: var(--text-secondary); }
+
+        /* --- Mobile Responsive --- */
+        @media (max-width: 1200px) {
+            .section-title { font-size: 2.2rem; }
+            .skills-grid, .edu-lang-section { grid-template-columns: 1fr; gap: 40px; }
+        }
+
+        @media (max-width: 768px) {
+            .page-header { padding: 120px 0 40px; }
+            .page-title { font-size: 2.5rem; }
+            nav .nav-links {
+                display: none;
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--bg-deep);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 40px;
+                z-index: 999;
+            }
+            nav.mobile-active .nav-links { display: flex; }
+            .menu-toggle { display: flex; }
+            nav.mobile-active .menu-toggle span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+            nav.mobile-active .menu-toggle span:nth-child(2) { opacity: 0; }
+            nav.mobile-active .menu-toggle span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+            .stats-grid { grid-template-columns: 1fr; }
+            .about-card { padding: 30px; }
+            #about, #skills, #experience, #services { padding: 60px 0; }
+            .edu-lang-section { padding: 60px 0; }
+        }
+
+        @media (max-width: 480px) {
+            .page-header { padding: 100px 0 30px; }
+            .page-title { font-size: 2rem; }
+            .page-subtitle { font-size: 0.95rem; margin-bottom: 20px; }
+            .section-title { font-size: 1.8rem; }
+            .section-subtitle { margin-bottom: 2.5rem; }
+            .about-card { padding: 24px 16px; }
+            .about-text { font-size: 1.1rem; margin-bottom: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="orb-container">
+        <div class="orb orb-list-1"></div>
+        <div class="orb orb-list-2"></div>
+        <div class="orb orb-list-3"></div>
+        <div class="orb orb-hero"></div>
+    </div>
+
+    <div class="editing-elements">
+        <div class="element el-1"><img src="icon-2.png" alt="Icon"></div>
+        <div class="element el-2"><img src="icon-3.png" alt="Icon"></div>
+        <div class="element el-3"><img src="icon-4.png" alt="Icon"></div>
+        <div class="element el-4"><img src="icon-5.png" alt="Icon"></div>
+        <div class="element el-5"><img src="icon-6.png" alt="Icon"></div>
+        <div class="element el-6"><img src="icon-2.png" alt="Icon"></div>
+        <div class="element el-7"><img src="icon-3.png" alt="Icon"></div>
+        <div class="element el-8"><img src="icon-4.png" alt="Icon"></div>
+        <div class="element el-9"><img src="icon-1.png" alt="Icon"></div>
+        <div class="element el-10"><img src="icon-7.png" alt="Icon"></div>
+    </div>
+
+    <nav id="navbar">
+        <div class="container">
+            <a href="index.html" class="logo-box">
+                <img src="logo.jpg" id="logo-img" alt="HM Ariful Islam Logo" loading="eager" decoding="sync">
+                <span>HM Ariful Islam</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html" class="active">About</a>
+                <a href="videos.html">Videos</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-header container">
+        <h1 class="page-title scroll-reveal">About Me</h1>
+        <p class="page-subtitle scroll-reveal">Explore My Background & Technical Expertise</p>
+    </header>
+
+    <main>
+        <!-- ABOUT -->
+        <section id="about">
+            <div class="container">
+                <div class="about-card glass scroll-reveal">
+                    <h2 class="section-title">About Me</h2>
+                    <p class="about-text">
+                        Creative Video Editor & 3D Content Creator with 5+ years of experience delivering high-quality video content for digital platforms, brands, and marketing campaigns. Skilled in Adobe Premiere Pro, After Effects, DaVinci Resolve, Blender (3D) & AI Tools.
+                    </p>
+                    <div class="stats-grid">
+                        <div class="stat-card glass">
+                            <h3><span class="counter" data-target="5">0</span>+</h3>
+                            <p>Years Experience</p>
+                        </div>
+                        <div class="stat-card glass">
+                            <h3><span class="counter" data-target="800">0</span>+</h3>
+                            <p>Projects Delivered</p>
+                        </div>
+                        <div class="stat-card glass">
+                            <h3><span class="counter" data-target="5">0</span></h3>
+                            <p>Countries Served</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section id="experience">
+            <div class="container">
+                <h2 class="section-title scroll-reveal">Professional Experience</h2>
+                <p class="section-subtitle scroll-reveal">My career journey so far</p>
+                <div class="timeline">
+                    <div class="exp-item scroll-reveal">
+                        <div class="exp-dot"></div>
+                        <div class="exp-card glass">
+                            <span class="duration">2025 – Present</span>
+                            <h3>Video Editor (IT & Multimedia)</h3>
+                            <p class="company">Mariners Group</p>
+                            <p>Leading post-production workflows for corporate branding and digital marketing.</p>
+                        </div>
+                    </div>
+                    <div class="exp-item scroll-reveal">
+                        <div class="exp-dot"></div>
+                        <div class="exp-card glass">
+                            <span class="duration">2024 – 2025</span>
+                            <h3>Senior Video Editor</h3>
+                            <p class="company">Lens Cafe Studio</p>
+                            <p>Managed a team of editors and handled complex cinematic projects.</p>
+                        </div>
+                    </div>
+                    <div class="exp-item scroll-reveal">
+                        <div class="exp-dot"></div>
+                        <div class="exp-card glass">
+                            <span class="duration">2022 – 2024</span>
+                            <h3>Video Editor</h3>
+                            <p class="company">IT Promotion</p>
+                            <p>Created highly engaging social media content and commercial spots.</p>
+                        </div>
+                    </div>
+                    <div class="exp-item scroll-reveal">
+                        <div class="exp-dot"></div>
+                        <div class="exp-card glass">
+                            <span class="duration">2021 – 2023</span>
+                            <h3>Junior Video Editor</h3>
+                            <p class="company">OMS Studio</p>
+                            <p>Assisted in assembly and baseline color grading for YouTube content.</p>
+                        </div>
+                    </div>
+                    <div class="exp-item scroll-reveal">
+                        <div class="exp-dot"></div>
+                        <div class="exp-card glass">
+                            <span class="duration">2020 – Present</span>
+                            <h3>Freelance Video Editor</h3>
+                            <p class="company">Self-Employed (Remote)</p>
+                            <p>Helping international clients bring their visions to life through remote collaboration.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills">
+            <div class="container">
+                <h2 class="section-title scroll-reveal">Technical Expertise</h2>
+                <p class="section-subtitle scroll-reveal">Tools of the trade</p>
+                <div class="skills-grid scroll-reveal">
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Adobe Premiere Pro</span>
+                            <span><span class="counter" data-target="95">0</span>%</span>
+                        </div>
+                        <div class="progress-bg">
+                            <div class="progress-bar" data-target="95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Adobe After Effects</span>
+                            <span><span class="counter" data-target="85">0</span>%</span>
+                        </div>
+                        <div class="progress-bg">
+                            <div class="progress-bar" data-target="85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>AI Tools for Content</span>
+                            <span><span class="counter" data-target="85">0</span>%</span>
+                        </div>
+                        <div class="progress-bg">
+                            <div class="progress-bar" data-target="85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Color Grading & Audio</span>
+                            <span><span class="counter" data-target="85">0</span>%</span>
+                        </div>
+                        <div class="progress-bg">
+                            <div class="progress-bar" data-target="85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>DaVinci Resolve</span>
+                            <span><span class="counter" data-target="70">0</span>%</span>
+                        </div>
+                        <div class="progress-bg">
+                            <div class="progress-bar" data-target="70%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Blender 3D</span>
+                            <span><span class="counter" data-target="65">0</span>%</span>
+                        </div>
+                        <div class="progress-bg">
+                            <div class="progress-bar" data-target="65%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES -->
+        <section id="services">
+            <div class="container">
+                <h2 class="section-title scroll-reveal">What I Do</h2>
+                <div class="services-grid">
+                    <div class="service-card glass scroll-reveal">
+                        <h4>Video Editing</h4>
+                        <p>High-end post-production for brands and artists.</p>
+                    </div>
+                    <div class="service-card glass scroll-reveal">
+                        <h4>Motion Graphics</h4>
+                        <p>Dynamic visuals that bring stories to life.</p>
+                    </div>
+                    <div class="service-card glass scroll-reveal">
+                        <h4>Color Grading</h4>
+                        <p>Professional look and feel for every frame.</p>
+                    </div>
+                    <div class="service-card glass scroll-reveal">
+                        <h4>3D Animation</h4>
+                        <p>Creating immersive 3D environments and assets.</p>
+                    </div>
+                    <div class="service-card glass scroll-reveal">
+                        <h4>AI Integration</h4>
+                        <p>Leveraging AI for faster and smarter workflows.</p>
+                    </div>
+                    <div class="service-card glass scroll-reveal">
+                        <h4>Storytelling</h4>
+                        <p>Direction that connects with the viewer's heart.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION & LANGUAGES -->
+        <section class="container">
+            <div class="edu-lang-section">
+                <div class="edu-column scroll-reveal">
+                    <h2 class="section-title" style="text-align: left; margin-bottom: 2rem;">Education</h2>
+                    <div class="edu-cards">
+                        <div class="edu-card glass">
+                            <h3>Alim (HSC Equivalent)</h3>
+                            <p>Charfassion Alia Madrasa | 2018</p>
+                        </div>
+                        <div class="edu-card glass">
+                            <h3>Dakhil (SSC Equivalent)</h3>
+                            <p>Charfassion Alia Madrasa | 2016</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lang-column scroll-reveal">
+                    <h2 class="section-title" style="text-align: left; margin-bottom: 2rem;">Languages</h2>
+                    <div class="lang-grid">
+                        <div class="lang-card glass">
+                            <div class="circular-progress" data-percentage="100">
+                                <svg>
+                                    <circle class="bg" cx="40" cy="40" r="36"></circle>
+                                    <circle class="bar" cx="40" cy="40" r="36"></circle>
+                                </svg>
+                                <div class="percent-text"><span class="counter" data-target="100">0</span>%</div>
+                            </div>
+                            <div class="lang-info">
+                                <h4>Bangla</h4>
+                                <span>Native</span>
+                            </div>
+                        </div>
+                        <div class="lang-card glass">
+                            <div class="circular-progress" data-percentage="80">
+                                <svg>
+                                    <circle class="bg" cx="40" cy="40" r="36"></circle>
+                                    <circle class="bar" cx="40" cy="40" r="36"></circle>
+                                </svg>
+                                <div class="percent-text"><span class="counter" data-target="80">0</span>%</div>
+                            </div>
+                            <div class="lang-info">
+                                <h4>English</h4>
+                                <span>Professional</span>
+                            </div>
+                        </div>
+                        <div class="lang-card glass">
+                            <div class="circular-progress" data-percentage="55">
+                                <svg>
+                                    <circle class="bg" cx="40" cy="40" r="36"></circle>
+                                    <circle class="bar" cx="40" cy="40" r="36"></circle>
+                                </svg>
+                                <div class="percent-text"><span class="counter" data-target="55">0</span>%</div>
+                            </div>
+                            <div class="lang-info">
+                                <h4>Arabic</h4>
+                                <span>Intermediate</span>
+                            </div>
+                        </div>
+                        <div class="lang-card glass">
+                            <div class="circular-progress" data-percentage="85">
+                                <svg>
+                                    <circle class="bg" cx="40" cy="40" r="36"></circle>
+                                    <circle class="bar" cx="40" cy="40" r="36"></circle>
+                                </svg>
+                                <div class="percent-text"><span class="counter" data-target="85">0</span>%</div>
+                            </div>
+                            <div class="lang-info">
+                                <h4>Hindi</h4>
+                                <span>Fluent</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=61582227263111" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/hmariful.ve/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/md-ariful-islam-7ab51232b" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://wa.me/+8801752559849" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <p class="footer-text">© 2025 HM Ariful Islam · All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- Prevent Auto-Scroll jump on load ---
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+
+        // --- Navbar Scroll Logic ---
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // --- Mobile Menu Toggle ---
+        const mobileMenu = document.getElementById('mobile-menu');
+        const nav = document.getElementById('navbar');
+        mobileMenu.addEventListener('click', () => {
+            nav.classList.toggle('mobile-active');
+        });
+
+        // Close mobile menu when a nav link is clicked
+        const navLinks = document.querySelectorAll('.nav-links a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('mobile-active');
+            });
+        });
+
+        // --- Scroll Reveal Animation ---
+        const observerOptions = { threshold: 0.1 };
+
+        // Number Counter Logic
+        function animateCounter(el) {
+            const target = parseInt(el.getAttribute('data-target'));
+            let count = 0;
+            const duration = 2000; // 2 seconds
+            const increment = target / (duration / 16); // 60fps
+
+            const updateCount = () => {count += increment;
+                if (count < target) {
+                    el.textContent = Math.ceil(count);
+                    requestAnimationFrame(updateCount);
+                } else {
+                    el.textContent = target;
+                }
+            };
+            updateCount();
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Specific trigger for counters
+                    const counters = entry.target.querySelectorAll('.counter');
+                    counters.forEach(counter => {
+                        if (!counter.classList.contains('animated')) {
+                            animateCounter(counter);
+                            counter.classList.add('animated');
+                        }
+                    });
+
+                    // Specific trigger for skill bars
+                    if (entry.target.classList.contains('skills-grid') || entry.target.querySelector('.skills-grid')) {
+                        const bars = entry.target.querySelectorAll('.progress-bar');
+                        bars.forEach(bar => {
+                            bar.style.width = bar.getAttribute('data-target');
+                        });
+                    }
+
+                    // Specific trigger for language rings
+                    if (entry.target.classList.contains('lang-column') || entry.target.querySelector('.lang-column')) {
+                        const rings = entry.target.querySelectorAll('.circular-progress');
+                        rings.forEach(ring => {
+                            const percent = ring.getAttribute('data-percentage');
+                            const circle = ring.querySelector('.bar');
+                            const offset = 226 - (226 * percent / 100);
+                            circle.style.strokeDashoffset = offset;
+                        });
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal, #about, #skills, #experience, #services').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
