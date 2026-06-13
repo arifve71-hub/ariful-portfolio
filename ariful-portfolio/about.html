@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Me | HM Ariful Islam</title>
-    <link rel="icon" type="image/x-icon" href="logo.jpg">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -227,6 +227,8 @@
         #logo-img {
             width: 40px;
             height: 40px;
+            aspect-ratio: 1 / 1;
+            flex-shrink: 0;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid rgba(255, 255, 255, 0.2);
@@ -445,6 +447,34 @@
         }
         .service-card h4 { margin-top: 15px; margin-bottom: 10px; font-size: 1.1rem; }
         .service-card p { font-size: 0.9rem; color: var(--text-secondary); }
+
+        /* --- Button Component --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--gradient-violet);
+            color: white;
+            box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
+            white-space: nowrap;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+            box-shadow: 0 8px 25px rgba(168, 85, 247, 0.6);
+            transform: translateY(-2px);
+        }
 
         /* --- Education & Languages --- */
         .edu-lang-section {
@@ -850,6 +880,15 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- DOWNLOAD CV SECTION -->
+        <section class="container scroll-reveal" style="text-align: center; margin-top: -20px; margin-bottom: 80px;">
+            <div style="display: inline-block;">
+                <a href="https://drive.google.com/file/d/15Z6gO8E66oDE49Prx2qbPosA8y5-mZmN/view?usp=drive_link" target="_blank" class="btn btn-primary" style="gap: 10px;">
+                    <i class="fas fa-download"></i> Download My CV
+                </a>
             </div>
         </section>
     </main>
